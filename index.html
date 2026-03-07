@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAM — Book AI Mentor | Investor Brief</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=DM+Mono:wght@300;400;500&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0f0e0c;
+  --paper: #f5f0e8;
+  --accent: #c8392b;
+  --accent2: #2b6cb0;
+  --muted: #8a8070;
+  --border: #d4cfc4;
+  --highlight: #fff3cd;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+/* grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 100;
+}
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 60px;
+  position: relative;
+}
+/* ─── HEADER ─── */
+header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 32px;
+  margin-bottom: 64px;
+  gap: 24px;
+}
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.brand-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.brand-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.brand-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+}
+.header-meta { text-align: right; }
+.confidential {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  display: inline-block;
+}
+.date {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+/* ─── TAGLINE ─── */
+.tagline-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 40px 48px;
+  margin-bottom: 64px;
+  position: relative;
+  overflow: hidden;
+}
+.tagline-block::after {
+  content: '\201C';
+  position: absolute;
+  right: 32px;
+  top: -20px;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 200px;
+  color: rgba(255,255,255,0.04);
+  line-height: 1;
+  pointer-events: none;
+}
+.tagline {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.5;
+  max-width: 700px;
+}
+.tagline em {
+  font-style: normal;
+  color: #f0c060;
+  border-bottom: 2px solid #f0c060;
+  padding-bottom: 2px;
+}
+/* ─── GRID SECTIONS ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.three-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+.section-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+p {
+  font-size: 14px;
+  color: #3a3530;
+  line-height: 1.8;
+}
+/* ─── PROBLEM ─── */
+.problem-list { list-style: none; margin-top: 12px; }
+.problem-list li {
+  font-size: 14px;
+  color: #3a3530;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.problem-list li::before {
+  content: '\00D7';
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+/* ─── METRICS ─── */
+.metric-card {
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  position: relative;
+  background: white;
+}
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--accent);
+}
+.metric-number {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.metric-number span {
+  font-size: 24px;
+  color: var(--accent);
+}
+.metric-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.metric-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.5;
+}
+/* ─── PRODUCT ─── */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 64px;
+}
+.product-card {
+  border: 1px solid var(--border);
+  padding: 28px;
+}
+.product-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: var(--accent2);
+  color: white;
+  padding: 3px 8px;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.product-card.tob .product-badge { background: var(--accent); }
+.product-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.product-desc {
+  font-size: 13px;
+  color: #4a4540;
+  line-height: 1.7;
+}
+.product-price {
+  margin-top: 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--accent2);
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+.product-card.tob .product-price { color: var(--accent); }
+/* ─── TECH ─── */
+.tech-section {
+  border: 1px solid var(--border);
+  padding: 32px;
+  margin-bottom: 64px;
+  background: white;
+}
+.tech-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.tech-row:last-child { border-bottom: none; }
+.tech-key {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+.tech-val {
+  font-size: 13px;
+  color: #2a2520;
+  line-height: 1.6;
+}
+.tech-tag {
+  display: inline-block;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  padding: 2px 8px;
+  margin: 2px;
+}
+/* ─── PRINCIPLES ─── */
+.principles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 64px;
+  border: 1px solid var(--border);
+}
+.principle-item {
+  background: var(--paper);
+  padding: 20px 18px;
+}
+.principle-num {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--border);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.principle-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+/* ─── ROADMAP ─── */
+.roadmap { margin-bottom: 64px; }
+.roadmap-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+  align-items: start;
+}
+.roadmap-phase { text-align: right; }
+.roadmap-phase-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.roadmap-phase-period {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: 2px;
+}
+.roadmap-content {
+  border-left: 2px solid var(--border);
+  padding-left: 24px;
+  position: relative;
+}
+.roadmap-content::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.roadmap-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.roadmap-desc {
+  font-size: 13px;
+  color: #4a4540;
+  line-height: 1.6;
+}
+.roadmap-item.active .roadmap-content { border-left-color: var(--accent); }
+.roadmap-item.active .roadmap-phase-period { color: var(--accent); }
+/* ─── ASK ─── */
+.ask-block {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 48px;
+  margin-bottom: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+.ask-amount {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  color: #f0c060;
+  margin-bottom: 8px;
+}
+.ask-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 20px;
+}
+.ask-use-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+.ask-use-bar {
+  width: 3px;
+  background: #f0c060;
+  align-self: stretch;
+  flex-shrink: 0;
+  min-height: 20px;
+}
+.ask-use-text {
+  font-size: 13px;
+  color: rgba(245,240,232,0.8);
+  line-height: 1.5;
+}
+.ask-use-pct {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: #f0c060;
+  margin-bottom: 4px;
+}
+/* ─── FOUNDER ─── */
+.founder-block {
+  border: 1px solid var(--border);
+  padding: 36px;
+  margin-bottom: 64px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 32px;
+  align-items: start;
+}
+.founder-avatar {
+  width: 80px;
+  height: 80px;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Shippori Mincho', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--paper);
+  flex-shrink: 0;
+}
+.founder-name {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.founder-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.founder-bio {
+  font-size: 14px;
+  color: #3a3530;
+  line-height: 1.8;
+}
+/* ─── FOOTER ─── */
+footer {
+  border-top: 1px solid var(--border);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px;
+  font-weight: 800;
+}
+.footer-contact {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+  line-height: 1.6;
+}
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+header, .tagline-block, .two-col, .three-col,
+.product-grid, .tech-section, .principles-grid,
+.roadmap, .ask-block, .founder-block {
+  animation: fadeUp 0.6s ease both;
+}
+.tagline-block   { animation-delay: 0.1s; }
+.two-col         { animation-delay: 0.15s; }
+.three-col       { animation-delay: 0.2s; }
+.product-grid    { animation-delay: 0.25s; }
+.tech-section    { animation-delay: 0.3s; }
+.principles-grid { animation-delay: 0.35s; }
+.roadmap         { animation-delay: 0.4s; }
+.ask-block       { animation-delay: 0.45s; }
+.founder-block   { animation-delay: 0.5s; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <span class="brand-tag">Investor Brief · Confidential</span>
+      <div class="brand-name">BAM</div>
+      <div class="brand-sub">Book AI Mentor — AI-Powered Reading Platform</div>
+    </div>
+    <div class="header-meta">
+      <div class="confidential">Confidential</div>
+      <div class="date">March 2026 · Pre-Seed Round</div>
+    </div>
+  </header>
+
+  <!-- TAGLINE -->
+  <div class="tagline-block">
+    <div class="tagline">
+      好きな著者・本と<em>本屋を回ってカフェで話せる</em>、<br>
+      まったく新しい読書体験をAIで実現する。
+    </div>
+  </div>
+
+  <!-- PROBLEM / OPPORTUNITY -->
+  <div class="two-col">
+    <div>
+      <div class="section-label">Problem</div>
+      <div class="section-title">読書は孤独で、知識は断片化される</div>
+      <ul class="problem-list">
+        <li>本を読んでも内容が定着せず、問いかけられる相手がいない</li>
+        <li>複数の著者視点を横断して考察する手段がない</li>
+        <li>出版社は書籍のデジタル価値をマネタイズできていない</li>
+        <li>NotebookLMは個人用途のみで、EC・流通との接続がない</li>
+      </ul>
+    </div>
+    <div>
+      <div class="section-label">Opportunity</div>
+      <div class="section-title">2つの市場を同時に取りに行く</div>
+      <p>
+        日本の電子書籍市場は<strong>6,000億円超</strong>（2024年）で年10%成長中。
+        一方、出版社のDX需要は高まっているが、AI読書ツールと
+        EC流通を繋ぐプレイヤーが存在しない。
+        BtoC（読者サブスク）とBtoB（出版社レベニューシェア）の
+        二層構造で、どちらが伸びても事業が成立する設計。
+      </p>
+    </div>
+  </div>
+
+  <!-- METRICS -->
+  <div class="section-label">Traction</div>
+  <div class="three-col" style="margin-top:20px;">
+    <div class="metric-card">
+      <div class="metric-number">14<span>日</span></div>
+      <div class="metric-label">MVP開発期間</div>
+      <div class="metric-sub">ゼロからPhase 1を14日で本番デプロイ済み</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">11<span>原則</span></div>
+      <div class="metric-label">設計原則</div>
+      <div class="metric-sub">差し替え可能性・SSoT・AI Control Plane等、大規模対応アーキテクチャ</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-number">750<span>円</span></div>
+      <div class="metric-label">月額サブスク</div>
+      <div class="metric-sub">現在billing_mode=OFFでユーザー実験中。有料化はフラグ1つで即時可能</div>
+    </div>
+  </div>
+
+  <!-- PRODUCT -->
+  <div class="section-label">Product</div>
+  <div class="product-grid" style="margin-top:20px;">
+    <div class="product-card">
+      <span class="product-badge">BtoC</span>
+      <div class="product-name">BAM ToC — AIリーダー</div>
+      <div class="product-desc">
+        PDFをアップロードしてAIとリアルタイムで対話できる電子書籍リーダー。
+        複数の本を同時に入力して著者視点を比較、ハイライトからそのままAIに問いかけられる。
+        NotebookLMの読書特化版。
+      </div>
+      <div class="product-price">¥750/月 · 月間トークン制限付き無料プランあり</div>
+    </div>
+    <div class="product-card tob">
+      <span class="product-badge">BtoB</span>
+      <div class="product-name">BAM ToB — AI書店</div>
+      <div class="product-desc">
+        出版社が書籍を登録し、AIによる試読チャットを提供できるEC基盤。
+        「この本の第1章についてAIと対話してから購入する」体験を実現。
+        購入完了時にToCへ自動連携。
+      </div>
+      <div class="product-price">レベニューシェア型 · 出版社管理画面付き</div>
+    </div>
+  </div>
+
+  <!-- TECH STACK -->
+  <div class="section-label">Technology</div>
+  <div class="tech-section" style="margin-top:20px;">
+    <div class="tech-row">
+      <div class="tech-key">AI Layer</div>
+      <div class="tech-val">
+        <span class="tech-tag">Claude Sonnet 4.6</span>
+        <span class="tech-tag">Voyage AI voyage-3</span>
+        <span class="tech-tag">pgvector</span>
+        <span class="tech-tag">RAG Pipeline</span>
+        — AIGateway（AI Control Plane）で全呼び出しを統制。モデル差し替えはenv変数1つで完結。
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-key">Infrastructure</div>
+      <div class="tech-val">
+        <span class="tech-tag">Next.js 14</span>
+        <span class="tech-tag">Supabase</span>
+        <span class="tech-tag">Vercel</span>
+        <span class="tech-tag">Turborepo</span>
+        — モノレポ構成。本番URL稼働中: web-chi-three-41.vercel.app
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-key">Monetization</div>
+      <div class="tech-val">
+        <span class="tech-tag">Stripe</span>
+        <span class="tech-tag">Feature Flags</span>
+        — billing_modeフラグ1つで無料→有料をデプロイなしに切替。現在OFF（ユーザー実験中）
+      </div>
+    </div>
+    <div class="tech-row">
+      <div class="tech-key">Analytics</div>
+      <div class="tech-val">
+        <span class="tech-tag">experiment_events</span>
+        <span class="tech-tag">billing_off_v1</span>
+        — 全ユーザー行動を構造化イベントとして記録。DAU・チャット傾向・書籍ジャンル利用率を計測中
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURE PRINCIPLES -->
+  <div class="section-label">Architecture — なぜスケールするか</div>
+  <div class="principles-grid" style="margin-top:20px;">
+    <div class="principle-item">
+      <div class="principle-num">①</div>
+      <div class="principle-name">差し替え可能性</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">④</div>
+      <div class="principle-name">非同期優先</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">⑦</div>
+      <div class="principle-name">Single Source of Truth</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">⑨</div>
+      <div class="principle-name">権限拡張前提</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">③</div>
+      <div class="principle-name">フィーチャーフラグ駆動</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">⑤</div>
+      <div class="principle-name">冪等性</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">⑧</div>
+      <div class="principle-name">Graceful Degradation</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-num">⑪</div>
+      <div class="principle-name">AI Control Plane</div>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="section-label">Roadmap</div>
+  <div class="roadmap" style="margin-top:20px;">
+    <div class="roadmap-item active">
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-name">Now</div>
+        <div class="roadmap-phase-period">Phase 1</div>
+      </div>
+      <div class="roadmap-content">
+        <div class="roadmap-title">BAM ToC MVP — 本番稼働中</div>
+        <div class="roadmap-desc">PDFアップロード・RAGチャット・Stripe決済・管理画面・ユーザー実験（billing_off_v1）が全て稼働。テスター招待フェーズ。</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-name">〜1ヶ月</div>
+        <div class="roadmap-phase-period">Phase 2</div>
+      </div>
+      <div class="roadmap-content">
+        <div class="roadmap-title">BAM ToB MVP — AI書店の立ち上げ</div>
+        <div class="roadmap-desc">出版社管理画面・AI試読チャット・EC購入導線・ToC自動連携。初期出版社パートナー獲得。</div>
+      </div>
+    </div>
+    <div class="roadmap-item">
+      <div class="roadmap-phase">
+        <div class="roadmap-phase-name">〜3ヶ月</div>
+        <div class="roadmap-phase-period">Phase 3</div>
+      </div>
+      <div class="roadmap-content">
+        <div class="roadmap-title">有料化・スケール</div>
+        <div class="roadmap-desc">billing_mode=ONへの切替。コンテンツ生成（スライド・マインドマップ）・UGC・読書記録SNS機能。Pinecone移行・1万DAU対応インフラ。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ASK -->
+  <div class="ask-block">
+    <div>
+      <div class="ask-label">Fundraising Ask</div>
+      <div class="ask-amount">¥30M</div>
+      <div style="font-family:'DM Mono',monospace;font-size:12px;color:rgba(245,240,232,0.5);margin-bottom:24px;">
+        エンジェルラウンド · プレシード
+      </div>
+      <div style="font-size:13px;color:rgba(245,240,232,0.7);line-height:1.8;">
+        ToB出版社パートナー獲得・有料転換の検証・
+        Phase 3開発を18ヶ月のランウェイで進めるための資金。
+      </div>
+    </div>
+    <div>
+      <div class="ask-label">Use of Funds</div>
+      <div class="ask-use-item">
+        <div class="ask-use-bar"></div>
+        <div>
+          <div class="ask-use-pct">40% · ¥12M</div>
+          <div class="ask-use-text">出版社パートナーシップ開拓・著作権法務対応</div>
+        </div>
+      </div>
+      <div class="ask-use-item">
+        <div class="ask-use-bar"></div>
+        <div>
+          <div class="ask-use-pct">35% · ¥10.5M</div>
+          <div class="ask-use-text">エンジニア採用（Phase 2-3開発加速）</div>
+        </div>
+      </div>
+      <div class="ask-use-item">
+        <div class="ask-use-bar"></div>
+        <div>
+          <div class="ask-use-pct">15% · ¥4.5M</div>
+          <div class="ask-use-text">AIインフラコスト（Voyage AI・Claude API）</div>
+        </div>
+      </div>
+      <div class="ask-use-item">
+        <div class="ask-use-bar"></div>
+        <div>
+          <div class="ask-use-pct">10% · ¥3M</div>
+          <div class="ask-use-text">グロース・ユーザー獲得</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUNDER -->
+  <div class="section-label">Founder</div>
+  <div class="founder-block" style="margin-top:20px;">
+    <div class="founder-avatar">前</div>
+    <div>
+      <div class="founder-name">前田 悠生</div>
+      <div class="founder-title">Founder &amp; CEO · BAM</div>
+      <div class="founder-bio">
+        AIを活用した大規模サービス開発に取り組むプロダクトビルダー。
+        BAM v4.0の設計では差し替え可能性・AI Control Plane・フィーチャーフラグ駆動など
+        11の設計原則を定義し、14日間でMVPをゼロから本番デプロイ。
+        セキュリティ上の脆弱性（ADMIN_EMAILS方式）を自ら特定・改善するなど、
+        プロダクトの品質と安全性に強いこだわりを持つ。
+        「好きな著者とカフェで話せる」読書体験の実現を目指し、
+        ToCとToBの二層構造で日本の出版エコシステムをアップデートする。
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">BAM</div>
+    <div class="footer-contact">
+      gureibu0326@gmail.com<br>
+      https://web-chi-three-41.vercel.app<br>
+      &copy; 2026 BAM · Confidential
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

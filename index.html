@@ -268,6 +268,33 @@ p {
   padding-top: 12px;
 }
 .product-card.tob .product-price { color: var(--accent); }
+/* ─── SCREENSHOTS ─── */
+.product-screenshots {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 20px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+.screenshot-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.screenshot-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  font-weight: 500;
+}
+.screenshot-item img {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
 /* ─── TECH ─── */
 .tech-section {
   border: 1px solid var(--border);
@@ -704,10 +731,20 @@ header, .tagline-block, .two-col, .three-col,
       <div class="product-name">BAM ToC — AIリーダー</div>
       <div class="product-desc">
         特定の書籍ECプラットフォーム（BAM ToB含む）で購入することで、AIとリアルタイムで対話できる電子書籍リーダー。
-        複数の本を同時に入力して著者視点を比較・討論。まるで「著者達のチャットグループに参加」したような感覚
+        複数の本を同時に入力して著者視点を比較・討論。まるで「著者達のチャットグループに参加」したような感覚。
         ハイライトからそのままAIに問いかけられる。NotebookLMの読書特化版。
       </div>
       <div class="product-price">¥750/月 · 月間トークン制限付き無料プランあり</div>
+      <div class="product-screenshots">
+        <div class="screenshot-item">
+          <div class="screenshot-title">この本（1つの著者・本）と対話</div>
+          <img src="images/toc-single.png" alt="この本（1つの著者・本）と対話">
+        </div>
+        <div class="screenshot-item">
+          <div class="screenshot-title">複数冊（複数著者）で討論</div>
+          <img src="images/toc-multi.png" alt="複数冊（複数著者）で討論">
+        </div>
+      </div>
     </div>
     <div class="product-card tob">
       <span class="product-badge">BtoB</span>

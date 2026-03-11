@@ -294,6 +294,27 @@ p {
   border: 1px solid var(--border);
   border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+/* ─── LIGHTBOX ─── */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15,14,12,0.85);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lightbox-overlay.active {
+  display: flex;
+}
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 6px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 /* ─── TECH ─── */
 .tech-section {
@@ -947,5 +968,22 @@ header, .tagline-block, .two-col, .three-col,
   </footer>
 
 </div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+document.querySelectorAll('.screenshot-item img').forEach(function(img) {
+  img.addEventListener('click', function() {
+    var lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = this.src;
+    lb.classList.add('active');
+  });
+});
+document.getElementById('lightbox').addEventListener('click', function() {
+  this.classList.remove('active');
+});
+</script>
 </body>
 </html>
